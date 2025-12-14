@@ -1,0 +1,18 @@
+vasudev@LAPTOP-RJ3JOSU3:~$ mkdir ransomware
+vasudev@LAPTOP-RJ3JOSU3:~$ cd ransomware/
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ echo "This is a file" > file.txt
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ echo "Leave me alone" > file2.txt
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ echo "Another one" > hey.txt
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ echo "one more" > pleasedonthurtme.txt
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+This is a file
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3
+Python 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> os.listdir()
+['file2.txt', 'file.txt', 'voldemort.py', 'hey.txt', 'pleasedonthurtme.txt']
