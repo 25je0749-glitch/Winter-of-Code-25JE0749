@@ -16,3 +16,74 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> import os
 >>> os.listdir()
 ['file2.txt', 'file.txt', 'voldemort.py', 'hey.txt', 'pleasedonthurtme.txt']
+>>> exit()
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ mkdir test
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt  test  voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'test', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+b'vJ5RcUBcuvg5_hJbFyaGOf2cCg9yajgtwmjtfFRFPbg='
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt  test  voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+b'vJ5RcUBcuvg5_hJbFyaGOf2cCg9yajgtwmjtfFRFPbg='
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt  test  voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt  test  thekey.key  voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt  test  thekey.key  voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+This is a file
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ ls
+file.txt  file2.txt  hey.txt  pleasedonthurtme.txt  test  thekey.key  voldemort.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+gAAAAABpQBwtZfPLXsGGYkvvdSoH6d6cSfRgDy-kuaI-EDw3L1lCjEjdy4onuKulnenrZfj-XTbCuEPIycOItBH9cxf2D9D9vA==vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat thekey.key
+UvwiWH47FyqedU0_m9EELWf6Z2MUSzr8hHA2krfYpKo=vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cp voldemort.py decrypt.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano decrypt.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+gAAAAABpQBwtZfPLXsGGYkvvdSoH6d6cSfRgDy-kuaI-EDw3L1lCjEjdy4onuKulnenrZfj-XTbCuEPIycOItBH9cxf2D9D9vA==vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 decrypt.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+This is a file
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+All your files have become encrypted.Send me 2 crore rupees otherwise i will delete all files in 24 hours
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+gAAAAABpQkapEMg9kGIQemyQVL8BpXW3curbqxKoRcaV3iU7lLVJW0xuyQug6pSDMTTa1yd6mRPmtPQc4Meko8S_L3kp8y7A8g==vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 decrypt.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ cat file.txt
+This is a file
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ nano decrypt.py
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 voldemort.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+All your files have become encrypted.Send me 2 crore rupees otherwise i will delete all files in 24 hours
+vasudev@LAPTOP-RJ3JOSU3:~/ransomware$ python3 decrypt.py
+['file2.txt', 'file.txt', 'hey.txt', 'pleasedonthurtme.txt']
+Enter  the secret phrase to decrypt your files
+coffee
+Congrats ,you have decrypt your files
