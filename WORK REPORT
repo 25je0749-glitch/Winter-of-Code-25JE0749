@@ -1,0 +1,37 @@
+25JE0749 
+REPORT RELATED TO THE TASK COVERED TILL DATE
+#  Work completed so far :
+To capture and inspect data travelling over the website like Instagram and facebook we use a network sniffer that’s why I install scapy  in my terminal ,before installling it I have install Ubuntu for windows subsystem for linux for writing code in python and also download python then after the scapy.
+# Challenges Faced :
+Since the task is of developing malware ,There are not much(tends to zero) reference videos so that I can make an idea of how to deploy a malware.
+Also the resource given are not so precise i.e. they have very much information that I take more time as expected to gather the required malware developing information and until the day I am writing this report I only get very few information about how it works and its function which I give detail in next part;
+# Research/Concepts learned 
+Day 0 : 
+Also understand all terms in details related to the task which I get to know in the task which I selected. 
+I have learnt about linux commands which I use further in making file ,directory ,etc.  
+
+Day 1:
+Learnt about what are packets in network and how they are travelling from one address to another address.
+About header ,Protocols(IP and TCP).
+Day 2 :
+Read about Dynamic routing and rearrangement of packets.
+Day 3 :
+Learnt about different name of packets(frame,block,cell,segment).
+About Network Packet Structure(Header,Payload,Trailer).
+Day 4 :
+Learnt how Cyclic reductancy check works .
+What are routers and router (lookup) table.
+Day 5 :
+About Components of Internet -: Hardware and Protocols 
+About Domain Name System(DNS) 
+Day 6:
+Read something about selenium and what is forge.
+How data privacy is maintained by using encryption protocols ,about TLS.
+Day 7 :
+What is Hashing and how the paasword is secured by it.
+Day 8 :
+Learnt and use a malicious software named ransomware in my terminal to encrypt and decrypt Files.
+Day 9 :
+About Fernet ,why it is called digital padlock.
+How to make Repository in Github and what is the function Readme.md.
+
