@@ -1,53 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>System Monitor</title>
-    <meta http-equiv="refresh" content="5">
-    <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            text-align: center; 
-            background-color: #f4f4f4; 
-            padding-top: 50px; 
-        }
-        .container {
-            background: white;
-            width: 400px;
-            margin: 0 auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        }
-        h1 { color: #333; }
-        .metric-box {
-            background-color: #e8f4f8;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-        .label { font-weight: bold; color: #555; }
-        .value { color: #007bff; font-weight: bold; font-size: 1.5em; }
-    </style>
+    <title>Keystroke Counter</title>
+    <meta http-equiv="refresh" content="1">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Current System Status</h1>
+    <center>
+        <h1>Keys Typed Monitor</h1>
         <hr>
+        
+        <h2>Current Count:</h2>
+        
+        <h1>{{ count }}</h1>
 
-        <div class="metric-box">
-            <span class="label">CPU Usage:</span><br>
-            <span class="value">{{ cpu }}%</span>
-        </div>
-
-        <div class="metric-box">
-            <span class="label">RAM Usage:</span><br>
-            <span class="value">{{ ram }}%</span>
-        </div>
-
-        <p style="font-size: 0.8em; color: #888;">Updates every 5 seconds</p>
-    </div>
+        <hr>
+        <p>Type anywhere on your computer to increase the count.</p>
+        <button onclick="location.reload()">Manual Refresh</button>
+    </center>
 
 </body>
 </html>
