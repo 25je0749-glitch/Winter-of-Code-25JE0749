@@ -18,3 +18,16 @@ Press CTRL+C to quit
  * Debugger is active!
  * Debugger PIN: 141-947-100
 127.0.0.1 - - [20/Dec/2025 07:40:05] "GET / HTTP/1.1" 200 -
+
+
+
+
+PS C:\Users\lenovo> notepad script.py
+PS C:\Users\lenovo> python script.py
+Scapy is starting... Waiting for traffic...
+Ether / IPv6 / TCP 2603:1040:a06:3::13:https > 2409:40e5:96:d3f8:58e5:538e:e8b:52af:56430 PA / Raw
+Ether / IPv6 / TCP 2409:40e5:96:d3f8:58e5:538e:e8b:52af:56430 > 2603:1040:a06:3::13:https A
+Ether / IPv6 / UDP 2409:40e5:96:d3f8:58e5:538e:e8b:52af:53783 > 2404:6800:4002:81d::200a:https / Raw
+Ether / IPv6 / UDP 2404:6800:4002:81d::200a:https > 2409:40e5:96:d3f8:58e5:538e:e8b:52af:53783 / Raw
+Ether / IPv6 / UDP 2404:6800:4002:81d::200a:https > 2409:40e5:96:d3f8:58e5:538e:e8b:52af:53783 / Raw
+Done! Captured 5 packets.
