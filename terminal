@@ -31,3 +31,373 @@ Ether / IPv6 / UDP 2409:40e5:96:d3f8:58e5:538e:e8b:52af:53783 > 2404:6800:4002:8
 Ether / IPv6 / UDP 2404:6800:4002:81d::200a:https > 2409:40e5:96:d3f8:58e5:538e:e8b:52af:53783 / Raw
 Ether / IPv6 / UDP 2404:6800:4002:81d::200a:https > 2409:40e5:96:d3f8:58e5:538e:e8b:52af:53783 / Raw
 Done! Captured 5 packets.
+
+
+
+# INSIDE SCAPY
+Tip: You can use `files = !ls *.png`
+>>> p = sniff(count=10, filter="icmp and host 4.2.2.1", prn=lambda x: x.summary())
+Ether / IP / ICMP 10.98.127.125 > 4.2.2.1 echo-request 0 / Raw
+Ether / IP / ICMP 4.2.2.1 > 10.98.127.125 echo-reply 0 / Raw
+Ether / IP / ICMP 10.98.127.125 > 4.2.2.1 echo-request 0 / Raw
+Ether / IP / ICMP 4.2.2.1 > 10.98.127.125 echo-reply 0 / Raw
+Ether / IP / ICMP 10.98.127.125 > 4.2.2.1 echo-request 0 / Raw
+Ether / IP / ICMP 4.2.2.1 > 10.98.127.125 echo-reply 0 / Raw
+Ether / IP / ICMP 10.98.127.125 > 4.2.2.1 echo-request 0 / Raw
+Ether / IP / ICMP 4.2.2.1 > 10.98.127.125 echo-reply 0 / Raw
+Ether / IP / ICMP 10.98.127.125 > 4.2.2.1 echo-request 0 / Raw
+Ether / IP / ICMP 4.2.2.1 > 10.98.127.125 echo-reply 0 / Raw
+>>> p
+<Sniffed: TCP:0 UDP:0 ICMP:10 Other:0>
+>>> p[0]
+<Ether  dst=b6:ad:47:4a:c9:c4 src=24:b2:b9:a8:a5:a1 type=IPv4 |<IP  version=4 ihl=5 tos=0x0 len=60 id=7696 flags= frag=0 ttl=128 proto=icmp chksum=0x8ccf src=10.98.127.125 dst=4.2.2.1 |<ICMP  type=echo-request code=0 chksum=0x4d4f id=0x1 seq=0xc unused=b'' |<Raw  load=b'abcdefghijklmnopqrstuvwabcdefghi' |>>>>
+>>> p = sniff(count=10, filter="icmp and host 4.2.2.1")
+>>> p
+<Sniffed: TCP:0 UDP:0 ICMP:10 Other:0>
+>>> p[1]
+<Ether  dst=24:b2:b9:a8:a5:a1 src=b6:ad:47:4a:c9:c4 type=IPv4 |<IP  version=4 ihl=5 tos=0x28 len=60 id=0 flags=DF frag=0 ttl=50 proto=icmp chksum=0xb8b7 src=4.2.2.1 dst=10.98.127.125 |<ICMP  type=echo-reply code=0 chksum=0x5547 id=0x1 seq=0x14 unused=b'' |<Raw  load=b'abcdefghijklmnopqrstuvwabcdefghi' |>>>>
+>>> amar = IP(dst="127.0.0.1") / ICMP() / "Hello, this is hidden stuff!"
+>>> amar.show()
+###[ IP ]###
+  version   = 4
+  ihl       = None
+  tos       = 0x0
+  len       = None
+  id        = 1
+  flags     =
+  frag      = 0
+  ttl       = 64
+  proto     = icmp
+  chksum    = None
+  src       = 127.0.0.1
+  dst       = 127.0.0.1
+  \options   \
+###[ ICMP ]###
+     type      = echo-request
+     code      = 0
+     chksum    = None
+     id        = 0x0
+     seq       = 0x0
+     unused    = b''
+###[ Raw ]###
+        load      = b'Hello, this is hidden stuff!'
+
+>>> # The Inner Doll (The Message)
+...: inner = Raw(load="Secret Message")
+...:
+...: # Putting the inner doll into the TCP doll
+...: middle = TCP(dport=80) / inner
+...:
+...: # Putting those into the IP doll
+...: outer = IP(dst="10.0.0.1") / middle
+...:
+...: # Now look at the whole 'Nesting Doll'
+...: outer.show()
+###[ IP ]###
+  version   = 4
+  ihl       = None
+  tos       = 0x0
+  len       = None
+  id        = 1
+  flags     =
+  frag      = 0
+  ttl       = 64
+  proto     = tcp
+  chksum    = None
+  src       = 10.98.127.125
+  dst       = 10.0.0.1
+  \options   \
+###[ TCP ]###
+     sport     = ftp_data
+     dport     = http
+     seq       = 0
+     ack       = 0
+     dataofs   = None
+     reserved  = 0
+     flags     = S
+     window    = 8192
+     chksum    = None
+     urgptr    = 0
+     options   = []
+###[ Raw ]###
+        load      = b'Secret Message'
+
+>>> tracert 4.2.2.1
+  Cell In[10], line 1
+    tracert 4.2.2.1
+            ^
+SyntaxError: invalid syntax
+
+>>> tracert
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Cell In[11], line 1
+----> 1 tracert
+
+NameError: name 'tracert' is not defined
+>>> tracert 4.2.2.1
+  Cell In[12], line 1
+    tracert 4.2.2.1
+            ^
+SyntaxError: invalid syntax
+
+>>> ls(ICMP)
+type       : ByteEnumField                       = ('8')
+code       : MultiEnumField (Depends on 8)       = ('0')
+chksum     : XShortField                         = ('None')
+id         : XShortField (Cond)                  = ('0')
+seq        : XShortField (Cond)                  = ('0')
+ts_ori     : ICMPTimeStampField (Cond)           = ('33466191')
+ts_rx      : ICMPTimeStampField (Cond)           = ('33466191')
+ts_tx      : ICMPTimeStampField (Cond)           = ('33466191')
+gw         : IPField (Cond)                      = ("'0.0.0.0'")
+ptr        : ByteField (Cond)                    = ('0')
+reserved   : ByteField (Cond)                    = ('0')
+length     : ByteField (Cond)                    = ('0')
+addr_mask  : IPField (Cond)                      = ("'0.0.0.0'")
+nexthopmtu : ShortField (Cond)                   = ('0')
+unused     : MultipleTypeField (ShortField, IntField, StrFixedLenField) = ("b''")
+extpad     : _ICMPExtensionPadField (Cond)       = ("b''")
+ext        : _ICMPExtensionField (Cond)          = ('None')
+>>> ls(IP)
+version    : BitField  (4 bits)                  = ('4')
+ihl        : BitField  (4 bits)                  = ('None')
+tos        : XByteField                          = ('0')
+len        : ShortField                          = ('None')
+id         : ShortField                          = ('1')
+flags      : FlagsField                          = ('<Flag 0 ()>')
+frag       : BitField  (13 bits)                 = ('0')
+ttl        : ByteField                           = ('64')
+proto      : ByteEnumField                       = ('0')
+chksum     : XShortField                         = ('None')
+src        : SourceIPField                       = ('None')
+dst        : DestIPField                         = ('None')
+options    : PacketListField                     = ('[]')
+>>> pingr = IP(dst="192.168.200.254")/ICMP()
+>>> sr1(pingr)
+Begin emission
+..
+Finished sending 1 packets
+.........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Received 3515 packets, got 0 answers, remaining 1 packets
+>>>  pingr = IP(dst="10.0.0.1")/ICMP()
+>>> sr1(pingr)
+Begin emission
+..
+Finished sending 1 packets
+.............................................................................................................................................................................................................................................................................................................................................................................
+Received 367 packets, got 0 answers, remaining 1 packets
+>>> >>> sr1(IP(dst="10.0.0.1")/ICMP(), verbose=False)
+>>> sr1(IP(dst="10.0.0.1")/ICMP(), verbose=False)
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+INFO: Malformed DNS message: too small!
+INFO: Malformed DNS message: invalid length!
+>>> sr1(IP(dst="10.98.127.179")/ICMP(), verbose=False)
+<IP  version=4 ihl=5 tos=0x0 len=28 id=9456 flags= frag=0 ttl=64 proto=icmp chksum=0x41fd src=10.98.127.179 dst=10.98.127.125 |<ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 seq=0x0 unused=b'' |>>
+>>> sr1(IP(dst="10.98.127.179")/ICMP())
+Begin emission
+
+Finished sending 1 packets
+.*
+Received 2 packets, got 1 answers, remaining 0 packets
+<IP  version=4 ihl=5 tos=0x0 len=28 id=9983 flags= frag=0 ttl=64 proto=icmp chksum=0x3fee src=10.98.127.179 dst=10.98.127.125 |<ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 seq=0x0 unused=b'' |>>
+>>> target_ip = p[1][IP].src
+>>> reply = sr1(IP(dst=target_ip)/ICMP(), timeout=2)
+Begin emission
+..
+Finished sending 1 packets
+.
+Received 3 packets, got 0 answers, remaining 1 packets
+>>> # Take the IP destination from your successful capture
+...: target_ip = p[1][IP].src
+...:
+...: # Send a new ping to that specific address
+...: reply = sr1(IP(dst=target_ip)/ICMP(), timeout=2)
+...:
+...: if reply:
+...:     print("It worked!")
+...:     reply.summary()
+...: else:
+...:     print("Still no answer.")
+...:
+Begin emission
+
+Finished sending 1 packets
+......................................
+Received 38 packets, got 0 answers, remaining 1 packets
+Still no answer.
+>>> >>> # Use a public, highly stable IP
+...: >>> public_ip = "8.8.8.8"
+...:
+...: >>> # We add 'verbose=True' just to see the 'A' (Answer) if it happens
+...: >>> reply = sr1(IP(dst=public_ip)/ICMP(), timeout=5, verbose=True)
+...:
+...: >>> if reply:
+...: ...     print("Success! Google answered.")
+...: ...     print(reply.summary())
+...: ... else:
+...: ...     print("Even Google didn't answer. This means your internet or firewall is blocking Scapy.")
+...:
+Begin emission
+
+Finished sending 1 packets
+
+Received 31 packets, got 0 answers, remaining 1 packets
+Even Google didn't answer. This means your internet or firewall is blocking Scapy.
+>>> resp = sr1(pingr)
+Begin emission
+..
+Finished sending 1 packets
+.................................................................................................................................INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+...........INFO: Malformed DNS message: too small!
+.INFO: Malformed DNS message: too small!
+.INFO: Malformed DNS message: too small!
+....INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+.INFO: Malformed DNS message: invalid length!
+....................................................................................................................................................................
+Received 319 packets, got 0 answers, remaining 1 packets
+>>> resp = sr1(IP(dst=target_ip)/ICMP(), timeout=2)
+Begin emission
+
+Finished sending 1 packets
+.................................................
+Received 49 packets, got 0 answers, remaining 1 packets
+>>> resp = sr1(IP(dst="10.98.127.179")/ICMP())
+Begin emission
+
+Finished sending 1 packets
+.*
+Received 2 packets, got 1 answers, remaining 0 packets
+>>> resp[0].summary()
+'IP / ICMP 10.98.127.179 > 10.98.127.125 echo-reply 0'
+>>> resp[1].summary()
+'ICMP 10.98.127.179 > 10.98.127.125 echo-reply 0'
+>>> resp[2].summary()
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+Cell In[32], line 1
+----> 1 resp[2].summary()
+
+File ~\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\scapy\packet.py:1384, in Packet.__getitem__(self, cls)
+   1382     else:
+   1383         name = cast(str, lname)
+-> 1384     raise IndexError("Layer [%s] not found" % name)
+   1385 return ret
+
+IndexError: Layer [2] not found
+>>> exit()
+
+<sys>:0: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000205C30DF3D0>
+PS C:\Users\lenovo> cd Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates\network_test.py
+cd : Cannot find path 'C:\Users\lenovo\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates\network_test.py'
+because it does not exist.
+At line:1 char:1
++ cd Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates\netwo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\lenovo...network_test.py:String) [Set-Location], ItemNotFoundE
+   xception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\lenovo> cd OneDrive\Desktop\monitoring_dashboard\templates\network_test.py
+cd : Cannot find path 'OneDrive\Desktop\monitoring_dashboard\templates\network_test.py' because it does not exist.
+At line:1 char:1
++ cd OneDrive\Desktop\monitoring_dashboard\templates\network_test.py
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (OneDrive\Deskto...network_test.py:String) [Set-Location], ItemNotFoundE
+   xception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\lenovo> cd OneDrive\Desktop\monitoring_dashboard\templates
+PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
+Scapy is ready!
