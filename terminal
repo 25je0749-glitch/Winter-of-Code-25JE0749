@@ -401,3 +401,12 @@ At line:1 char:1
 PS C:\Users\lenovo> cd OneDrive\Desktop\monitoring_dashboard\templates
 PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
 Scapy is ready!
+
+PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
+I got a response!
+IP / ICMP 10.98.127.179 > 10.98.127.125 echo-reply 
+
+PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
+Reply from 10.98.127.179
+Final TTL: 64
+The packet traveled through approximately 0 routers!
