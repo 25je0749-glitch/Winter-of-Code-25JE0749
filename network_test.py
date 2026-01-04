@@ -1,3 +1,5 @@
+#CODE FOR CONNECTIVITY TESTING
+
 #! /usr/bin/env python3
 from scapy.all import IP, ICMP, sr1
 
@@ -13,3 +15,6 @@ if reply:
 else:
     # 4. If it's None (empty), the timeout was reached
     print("No response from the server.")
+
+
+
