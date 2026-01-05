@@ -187,96 +187,8 @@ Begin emission
 Finished sending 1 packets
 .............................................................................................................................................................................................................................................................................................................................................................................
 Received 367 packets, got 0 answers, remaining 1 packets
->>> >>> sr1(IP(dst="10.0.0.1")/ICMP(), verbose=False)
->>> sr1(IP(dst="10.0.0.1")/ICMP(), verbose=False)
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
-INFO: Malformed DNS message: too small!
-INFO: Malformed DNS message: invalid length!
+
+
 >>> sr1(IP(dst="10.98.127.179")/ICMP(), verbose=False)
 <IP  version=4 ihl=5 tos=0x0 len=28 id=9456 flags= frag=0 ttl=64 proto=icmp chksum=0x41fd src=10.98.127.179 dst=10.98.127.125 |<ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 seq=0x0 unused=b'' |>>
 >>> sr1(IP(dst="10.98.127.179")/ICMP())
@@ -286,6 +198,8 @@ Finished sending 1 packets
 .*
 Received 2 packets, got 1 answers, remaining 0 packets
 <IP  version=4 ihl=5 tos=0x0 len=28 id=9983 flags= frag=0 ttl=64 proto=icmp chksum=0x3fee src=10.98.127.179 dst=10.98.127.125 |<ICMP  type=echo-reply code=0 chksum=0xffff id=0x0 seq=0x0 unused=b'' |>>
+
+
 >>> target_ip = p[1][IP].src
 >>> reply = sr1(IP(dst=target_ip)/ICMP(), timeout=2)
 Begin emission
@@ -293,6 +207,8 @@ Begin emission
 Finished sending 1 packets
 .
 Received 3 packets, got 0 answers, remaining 1 packets
+
+
 >>> # Take the IP destination from your successful capture
 ...: target_ip = p[1][IP].src
 ...:
@@ -311,6 +227,9 @@ Finished sending 1 packets
 ......................................
 Received 38 packets, got 0 answers, remaining 1 packets
 Still no answer.
+
+
+
 >>> >>> # Use a public, highly stable IP
 ...: >>> public_ip = "8.8.8.8"
 ...:
@@ -329,6 +248,8 @@ Finished sending 1 packets
 
 Received 31 packets, got 0 answers, remaining 1 packets
 Even Google didn't answer. This means your internet or firewall is blocking Scapy.
+
+
 >>> resp = sr1(pingr)
 Begin emission
 ..
@@ -353,6 +274,8 @@ Begin emission
 Finished sending 1 packets
 .................................................
 Received 49 packets, got 0 answers, remaining 1 packets
+
+
 >>> resp = sr1(IP(dst="10.98.127.179")/ICMP())
 Begin emission
 
@@ -363,6 +286,8 @@ Received 2 packets, got 1 answers, remaining 0 packets
 'IP / ICMP 10.98.127.179 > 10.98.127.125 echo-reply 0'
 >>> resp[1].summary()
 'ICMP 10.98.127.179 > 10.98.127.125 echo-reply 0'
+
+
 >>> resp[2].summary()
 ---------------------------------------------------------------------------
 IndexError                                Traceback (most recent call last)
@@ -402,11 +327,3 @@ PS C:\Users\lenovo> cd OneDrive\Desktop\monitoring_dashboard\templates
 PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
 Scapy is ready!
 
-PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
-I got a response!
-IP / ICMP 10.98.127.179 > 10.98.127.125 echo-reply 
-
-PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
-Reply from 10.98.127.179
-Final TTL: 64
-The packet traveled through approximately 0 routers!
