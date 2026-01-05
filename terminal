@@ -303,27 +303,5 @@ File ~\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\scapy\packet.py
 IndexError: Layer [2] not found
 >>> exit()
 
-<sys>:0: ResourceWarning: unclosed database in <sqlite3.Connection object at 0x00000205C30DF3D0>
-PS C:\Users\lenovo> cd Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates\network_test.py
-cd : Cannot find path 'C:\Users\lenovo\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates\network_test.py'
-because it does not exist.
-At line:1 char:1
-+ cd Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates\netwo ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : ObjectNotFound: (C:\Users\lenovo...network_test.py:String) [Set-Location], ItemNotFoundE
-   xception
-    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
 
-PS C:\Users\lenovo> cd OneDrive\Desktop\monitoring_dashboard\templates\network_test.py
-cd : Cannot find path 'OneDrive\Desktop\monitoring_dashboard\templates\network_test.py' because it does not exist.
-At line:1 char:1
-+ cd OneDrive\Desktop\monitoring_dashboard\templates\network_test.py
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : ObjectNotFound: (OneDrive\Deskto...network_test.py:String) [Set-Location], ItemNotFoundE
-   xception
-    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
-
-PS C:\Users\lenovo> cd OneDrive\Desktop\monitoring_dashboard\templates
-PS C:\Users\lenovo\OneDrive\Desktop\monitoring_dashboard\templates> python network_test.py
-Scapy is ready!
 
