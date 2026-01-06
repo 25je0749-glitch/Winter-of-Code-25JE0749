@@ -1,0 +1,79 @@
+25JE0749 
+REPORT RELATED TO THE TASK COVERED IN THE WHOLE MONTH
+#  Work completed so far :
+To capture and inspect data travelling over the website like Instagram and facebook we use a network sniffer that’s why I install scapy  in my terminal ,before installling it I have install Ubuntu for windows subsystem for linux for writing code in python and also download python then after the scapy, I have made the system that run in two different terminal and captures data and also store it in the terminal but in the same laptop.
+# Challenges Faced :
+Since the task is of developing malware ,There are not much(tends to zero) reference videos so that I can make an idea of how to deploy a malware.Thats why It become very hard for me to deploy that malware in another laptop due to some network firewall function which checks that in initial stage.
+Also the resource given are not so precise i.e. they have very much information that I take more time as expected to gather the required malware developing information and until the day I am writing this report I only get very few information about how it works and its function which I give detail in next part;
+
+# Research/Concepts learned 
+Day 0 : 
+Also understand all terms in details related to the task which I get to know in the task which I selected. 
+I have learnt about linux commands which I use further in making file ,directory ,etc.  
+
+Day 1:
+Learnt about what are packets in network and how they are travelling from one address to another address.
+About header ,Protocols(IP and TCP).
+Day 2 :
+Read about Dynamic routing and rearrangement of packets.
+Day 3 :
+Learnt about different name of packets(frame,block,cell,segment).
+About Network Packet Structure(Header,Payload,Trailer).
+Day 4 :
+Learnt how Cyclic reductancy check works .
+What are routers and router (lookup) table.
+Day 5 :
+About Components of Internet -: Hardware and Protocols 
+About Domain Name System(DNS) 
+Day 6:
+Read something about selenium and what is forge.
+How data privacy is maintained by using encryption protocols ,about TLS.
+Day 7 :
+What is Hashing and how the paasword is secured by it.
+Day 8 :
+Learnt and use a malicious software named ransomware in my terminal to encrypt and decrypt Files.
+Day 9 :
+About Fernet ,why it is called digital padlock.
+How to make Repository in Github and what is the function Readme.md.
+Day 10 :
+Learn about  how threading works.
+Day 11:
+Learn about html about script ,Style and Body.
+Learn about different tags.
+Day 12 :
+About layers in scapy how it views network traffic as layers.
+Day 13:
+Learn about the four types of  layers.
+Ethernet ,IP address,TCP,UDP,Payload.
+
+Day 14:
+About what is forging and decoding.
+Day 15:
+Learn about difference between classical task and advanced task (hacker stuff).
+Learn about What is Network Firewall and fuzzing technique.
+Day 16:
+About TTL and its relation with ping .
+Also about how it is responsible for lagging.
+Day 17:
+Read about traffic.pcap and why scapy uses SQlite.
+Day 18:
+Read about some commands of scapy like lsc().
+Day 19:
+In ping what is echo request and echo reply.
+And the measurement of time that how long the trip tooks in milliseconds.
+Day 20:
+About IANA and about the standard list of numbers 1,6 and 17.
+About what is type 0 and what is type 8.
+Day 21:
+Learn about in the sniff function of scapy What is the difference if we use prn = lambda …
+Day 22:
+What is the use of encapsulation and how layering works.
+Day 23:
+About the use of variables in scapy rather than using it directly.
+Day 24:
+How to check how many routers are there between starting point and end point. 
+Day  25:
+Make two different  python script and run it in two different terminal in my laptop and checks how it is stolen the data when I opened terminal two and typing things.
+Day 26:
+Try to make this happen in two different laptops.
+
