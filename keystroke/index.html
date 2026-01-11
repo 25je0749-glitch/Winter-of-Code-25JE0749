@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Keystroke Counter</title>
-    <meta http-equiv="refresh" content="1">
+    <title>Simple Live Monitor</title>
 </head>
 <body>
 
-    <center>
-        <h1>Keys Typed Monitor</h1>
-        <hr>
-        
-        <h2>Current Count:</h2>
-        
-        <h1>{{ count }}</h1>
+    <h1>Key Count: <span id="count">0</span></h1>
 
-        <hr>
-        <p>Type anywhere on your computer to increase the count.</p>
-        <button onclick="location.reload()">Manual Refresh</button>
-    </center>
+    <script>
+        // Ask the server for the number every 0.5 seconds
+        setInterval(function() {
+            fetch('/update_count')
+                .then(response => response.text())
+                .then(number => {
+                    document.getElementById('count').innerText = number;
+                });
+        }, 500);
+    </script>
 
 </body>
 </html>
