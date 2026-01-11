@@ -1,4 +1,3 @@
-import threading
 from flask import Flask, render_template
 from pynput import keyboard
 
@@ -8,22 +7,20 @@ key_count = 0
 
 def on_press(key):
     global key_count
-    
     key_count += 1
 
-def start_keyboard_listener():
-    
-    with keyboard.Listener(on_press=on_press) as listener:
-        listener.join()
-
-
-listener_thread = threading.Thread(target=start_keyboard_listener, daemon=True)
-listener_thread.start()
+listener = keyboard.Listener(on_press=on_press)
+listener.start()
 
 @app.route('/')
 def home():
-   
-    return render_template('index.html', count=key_count)
+    return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+# --- THIS IS THE MISSING PART ---
+@app.route('/update_count')
+def update_count():
+    return str(key_count)
+# --------------------------------
+
+if __name__ == "__main__":
+    app.run(debug=True)
